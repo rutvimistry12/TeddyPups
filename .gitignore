@@ -1,0 +1,60 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env
+.env.*
+!.env.example
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Local reference-inspection scratch files (website assets are under public/)
+/check_*.py
+/clean_*.py
+/download_*.py
+/extract_*.py
+/fetch_ssr.py
+/find_*.py
+/fix_*.py
+/get_exact_svg.py
+/inspect_*.py
+/parse_*.py
+/redownload_*.py
+/scrape_live.py
+/scratch_*.py
+/search_mascot.py
+/update_*.py
+/*.html
+/*.css
+/exact_mascot.svg
+/pup_stop_*.svg
+/scraped_site.html
+/.tmp-*
+

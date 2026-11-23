@@ -1,0 +1,275 @@
+// Prisma schema for TeddyPups UAE
+// Supported database: PostgreSQL
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum PuppyStatus {
+  AVAILABLE
+  RESERVED
+  PENDING
+  GONE_HOME
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+enum InquiryStatus {
+  NEW
+  CONTACTED
+  FOLLOW_UP
+  RESERVED
+  CLOSED
+}
+
+enum ContactMethod {
+  WHATSAPP
+  PHONE
+  EMAIL
+}
+
+enum UserRole {
+  SUPER_ADMIN
+  ADMIN
+  EDITOR
+}
+
+enum PuppyOrigin {
+  LOCAL_DUBAI
+  IMPORTED
+}
+
+model AdminUser {
+  id           String        @id @default(uuid())
+  email        String        @unique
+  name         String
+  passwordHash String
+  role         UserRole      @default(ADMIN)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  activities   ActivityLog[]
+
+  @@index([email])
+}
+
+model Breed {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?
+  averageSize String?  // e.g., "Teacup (1.5 - 2.5 kg)", "Tiny Toy"
+  hypoallergenic Boolean @default(true)
+  puppies     Puppy[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([slug])
+}
+
+model Puppy {
+  id             String          @id @default(uuid())
+  slug           String          @unique
+  name           String
+  breedId        String
+  breed          Breed           @relation(fields: [breedId], references: [id], onDelete: Restrict)
+  gender         Gender
+  ageWeeks       Int
+  priceAED       Int             // Price in AED
+  origin         PuppyOrigin     @default(LOCAL_DUBAI)
+  location       String          @default("Dubai Boutique Showroom, UAE")
+  status         PuppyStatus     @default(AVAILABLE)
+  isFeatured     Boolean         @default(false)
+  weightKg       Float?          // Expected adult weight or current weight
+  microchipped   Boolean         @default(true)
+  vaccinated     Boolean         @default(true)
+  passportReady  Boolean         @default(true)
+  healthTested   Boolean         @default(true)
+  color          String          // e.g. "Apricot", "Champagne Cream", "Ruby Red"
+  personality    String          // e.g. "Cuddly, gentle lap puppy with an affectionate soul"
+  description    String          // Long editorial story
+  healthNotes    String?
+  parentInfo     String?
+  images         PuppyImage[]
+  videos         PuppyVideo[]
+  inquiries      Inquiry[]
+  reservations   PuppyReservation[]
+  favorites      Favorite[]
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  @@index([slug])
+  @@index([status])
+  @@index([breedId])
+  @@index([isFeatured])
+}
+
+model PuppyImage {
+  id        String   @id @default(uuid())
+  puppyId   String
+  puppy     Puppy    @relation(fields: [puppyId], references: [id], onDelete: Cascade)
+  url       String
+  publicId  String?  // Cloudinary public_id
+  isPrimary Boolean  @default(false)
+  altText   String?
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+
+  @@index([puppyId])
+}
+
+model PuppyVideo {
+  id           String   @id @default(uuid())
+  puppyId      String
+  puppy        Puppy    @relation(fields: [puppyId], references: [id], onDelete: Cascade)
+  url          String
+  thumbnailUrl String?
+  title        String?
+  createdAt    DateTime @default(now())
+
+  @@index([puppyId])
+}
+
+model Customer {
+  id          String        @id @default(uuid())
+  name        String
+  email       String        @unique
+  phone       String
+  city        String?       @default("Dubai")
+  inquiries   Inquiry[]
+  reservations PuppyReservation[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([email])
+}
+
+model Inquiry {
+  id              String        @id @default(uuid())
+  puppyId         String?
+  puppy           Puppy?        @relation(fields: [puppyId], references: [id], onDelete: SetNull)
+  customerId      String?
+  customer        Customer?     @relation(fields: [customerId], references: [id], onDelete: SetNull)
+  customerName    String
+  customerEmail   String
+  customerPhone   String
+  city            String        @default("Dubai")
+  preferredMethod ContactMethod @default(WHATSAPP)
+  message         String
+  status          InquiryStatus @default(NEW)
+  internalNotes   String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@index([puppyId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model PuppyReservation {
+  id            String      @id @default(uuid())
+  puppyId       String
+  puppy         Puppy       @relation(fields: [puppyId], references: [id], onDelete: Restrict)
+  customerId    String
+  customer      Customer    @relation(fields: [customerId], references: [id], onDelete: Restrict)
+  depositPaid   Int         @default(0)
+  totalPrice    Int
+  notes         String?
+  reservedUntil DateTime?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@index([puppyId])
+}
+
+model Testimonial {
+  id           String             @id @default(uuid())
+  customerName String
+  puppyName    String
+  breedName    String
+  city         String             @default("Dubai, UAE")
+  story        String
+  quote        String
+  rating       Int                @default(5)
+  isApproved   Boolean            @default(true)
+  isFeatured   Boolean            @default(false)
+  adoptedDate  String?            // e.g. "October 2024"
+  images       TestimonialImage[]
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+
+  @@index([isApproved])
+}
+
+model TestimonialImage {
+  id            String      @id @default(uuid())
+  testimonialId String
+  testimonial   Testimonial @relation(fields: [testimonialId], references: [id], onDelete: Cascade)
+  url           String
+  altText       String?
+  createdAt     DateTime    @default(now())
+
+  @@index([testimonialId])
+}
+
+model FAQ {
+  id        String   @id @default(uuid())
+  question  String
+  answer    String
+  category  String   // e.g. "Puppy Health", "Reservations", "Delivery", "Imported Puppies", "Aftercare"
+  order     Int      @default(0)
+  isPublished Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([category])
+}
+
+model Favorite {
+  id        String   @id @default(uuid())
+  guestId   String   // Guest identifier / fingerprint / IP hash or session
+  puppyId   String
+  puppy     Puppy    @relation(fields: [puppyId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([guestId, puppyId])
+  @@index([guestId])
+}
+
+model WebsiteSettings {
+  id               String   @id @default(uuid())
+  key              String   @unique
+  brandName        String   @default("TeddyPups UAE")
+  tagline          String   @default("Premium Teacup & Toy Puppies in Dubai")
+  whatsappNumber   String   @default("+971501234567")
+  phone            String   @default("+971 4 800 PUPS")
+  email            String   @default("concierge@teddypups.ae")
+  address          String   @default("Villa 14, Al Wasl Road, Jumeirah 2, Dubai, United Arab Emirates")
+  openingHours     String   @default("Mon - Sun: 10:00 AM - 8:00 PM (By Private Appointment)")
+  heroHeadline     String   @default("Premium teacup puppies in Dubai")
+  heroSubheadline  String   @default("Little paws, big love. Meet your new best friend and bring home a lifetime of happiness.")
+  instagramUrl     String   @default("https://instagram.com/teddypupsuae")
+  tiktokUrl        String   @default("https://tiktok.com/@teddypupsuae")
+  updatedAt        DateTime @updatedAt
+}
+
+model ActivityLog {
+  id        String     @id @default(uuid())
+  adminId   String?
+  admin     AdminUser? @relation(fields: [adminId], references: [id], onDelete: SetNull)
+  action    String     // e.g. "PUPPY_CREATED", "STATUS_UPDATED", "INQUIRY_REPLIED"
+  details   String?
+  ipAddress String?
+  createdAt DateTime   @default(now())
+
+  @@index([createdAt])
+}
+
