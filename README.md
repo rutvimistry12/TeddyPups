@@ -1,248 +1,596 @@
-# 🐾 TeddyPups UAE — Premium Boutique Puppy Website (Dubai)
+# 🐾 TeddyPups UAE — Premium Boutique Puppy Website
 
-A complete, responsive, full-stack website designed for a luxury puppy boutique nursery located in **Jumeirah 2, Dubai, United Arab Emirates**.
+<p align="center">
+  <strong>A premium, interactive puppy boutique experience designed for Dubai, UAE.</strong>
+</p>
 
-Designed with a warm **storybook, scrapbook editorial aesthetic**: cream backgrounds, terracotta & caramel accents, chocolate typography, scalloped sticky navigation, hand-drawn tape and doodle stickers, real puppy photography galleries, and interactive features.
-
----
-
-## 🎨 Design Direction & Aesthetic
-
-- **Color Palette**:
-  - Cream: `#FFF8EC`
-  - Light Peach: `#FFE9C9`
-  - Warm Yellow: `#F6D28B`
-  - Caramel: `#D99545`
-  - Terracotta: `#A94E20`
-  - Chocolate: `#35190E`
-  - Soft Green / WhatsApp: `#287B52` & `#25D366`
-- **Typography**: Fraunces rounded serif headings, DM Sans body text, Caveat handwritten accents.
-- **Scrapbook Elements**: Real rotated photo frames, paper textures, dotted backgrounds, scalloped edge dividers, bespoke SVG puppy illustrations, and tape strips.
+<p align="center">
+  <a href="https://teddy-pups-chi.vercel.app/">🌐 Live Website</a> •
+  <a href="#features">✨ Features</a> •
+  <a href="#technology-stack">🛠️ Tech Stack</a> •
+  <a href="#installation-and-setup">🚀 Installation</a>
+</p>
 
 ---
 
-## 🚀 Technology Stack
+## 🌟 Overview
 
-- **Framework**: Next.js 14+ (App Router, Server Components & Route Handlers)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS with custom theme variables
-- **Animations**: Framer Motion & CSS keyframe animations
-- **Icons**: Lucide Icons
-- **Database & ORM**: PostgreSQL with Prisma ORM
-- **Authentication**: Secure JWT Cookie session management with `jose` & `bcryptjs`
-- **Validation**: Zod & React Hook Form
-- **Celebrations**: Canvas Confetti
+**TeddyPups UAE** is a modern, responsive, full-stack website designed for a premium puppy boutique nursery in Dubai, United Arab Emirates.
+
+The website combines a warm, playful, storybook-inspired visual identity with practical functionality, allowing visitors to discover available puppies, explore breeds, compare puppies, save favorites, submit inquiries, and learn about the adoption process.
+
+The project features an interactive frontend, backend API architecture, PostgreSQL database integration, and a secure administrative dashboard for managing puppies, inquiries, testimonials, and website settings.
+
+🔗 **Live Demo:** [https://teddy-pups-chi.vercel.app/](https://teddy-pups-chi.vercel.app/)
 
 ---
 
-## 🐶 10 Included Pages & Routes
+## 🎨 Design & User Experience
 
-1. **Home (`/`)**:
-   - Oversized editorial hero with mascot puppy illustrations, floating decorations, and trust badges.
-   - Featured available puppies with instant detail & WhatsApp links.
-   - Interactive breed discovery filter (Maltipoo, Toy Poodle, Bichon, Pomeranian, Cavapoo, Frenchie).
-   - "Two Ways Home" interactive pathway: Local Dubai Showroom vs. European Flight Import.
-   - 6-step visual adoption journey.
-   - Premium Puppy Promise (MOCCAE microchip, vaccinations, 1-year congenital warranty).
-   - Scrapbook happy families preview.
-   - FAQ preview accordion and final call-to-action.
+The website follows a **storybook scrapbook editorial aesthetic**, combining a premium boutique experience with playful puppy-themed illustrations and interactive elements.
 
-2. **Available Puppies (`/puppies`)**:
-   - Live multi-filter sidebar (Breed, Gender, Availability, Origin, Price range slider).
-   - Search input, real-time counter, sort dropdown (Price, Age, Newest), Grid/List toggle.
-   - Mobile filter drawer.
-   - Video indicators and photo carousel on cards.
-   - Empty state with reset actions.
+### Visual Identity
 
-3. **Puppy Details (`/puppies/[slug]`)**:
-   - High-resolution photo gallery with thumbnail selector.
-   - Video player modal for nursery play videos.
-   - Key attributes: Age, gender, estimated weight, color, MOCCAE microchip, vaccination record, and parentage pedigree.
-   - Interactive VIP inquiry form (validates name, email, phone, city, preferred method, auto-selects puppy) saving directly to the database.
-   - Related puppies recommendations.
-   - Sticky mobile inquiry bar.
+- Cream-colored backgrounds with warm peach and caramel accents.
+- Terracotta and chocolate typography.
+- Rounded editorial typography using Fraunces.
+- Clean body typography using DM Sans.
+- Handwritten accents using Caveat.
+- Scrapbook-inspired photo frames, tape, doodles, and paper textures.
+- Scalloped navigation and decorative section dividers.
+- Bespoke puppy illustrations and playful visual elements.
+- Responsive layouts for desktop, tablet, and mobile devices.
 
-4. **Happy Families (`/happy-families`)**:
-   - Scrapbook masonry gallery of customer testimonials across Dubai, Abu Dhabi, and the GCC.
-   - Breed filter pills.
-   - Interactive lightbox with previous / next navigation and testimonial quotes.
+### Color Palette
 
-5. **How It Works (`/how-it-works`)**:
-   - Interactive toggle: Dubai Showroom Adoption vs. European / Korean Flight Import.
-   - 4-step detailed visual timeline for each route.
-   - Illustrated Puppy Passport breakdown (MOCCAE barcode, vaccination passport, 1-year contract).
-   - Climate-controlled luxury chauffeur delivery & GCC flight nanny guide.
-
-6. **Frequently Asked Questions (`/faq`)**:
-   - Categorized accordions (Puppy Health, Reservations, Payments, Delivery, Imported Puppies, Breeds, Aftercare).
-   - Live search filter and category pills.
-   - Expand All / Collapse All controls.
-   - WhatsApp direct concierge prompt for unlisted inquiries.
-
-7. **Visit & Contact (`/contact`)**:
-   - Interactive contact and showroom appointment booking form.
-   - Jumeirah 2 showroom address, visiting hours, phone, email, and social channels.
-   - Google Maps iframe embed with Jumeirah location marker.
-   - Peeking puppy doodle mascot illustration.
-
-8. **Admin Dashboard (`/admin`)**:
-   - Protected with credentials configured in server environment variables.
-   - Overview metrics: Total puppies, Available, Reserved, Sold, New inquiries.
-   - Full Puppy Management CRUD: Add, edit, delete, toggle Featured, change status (Available, Reserved, Pending, Gone Home).
-   - Inquiry Management: Filter by status (New, Contacted, Follow-up, Reserved, Closed), add private internal notes, instant WhatsApp customer links.
-   - Testimonial Management: Approve / hide client stories.
-   - Website Settings: Update phone, WhatsApp number, showroom address, hero headlines.
-
-9. **Privacy Policy (`/privacy`)**:
-   - Detailed client data protection, UAE MOCCAE pet registry rules, and contact terms.
-
-10. **Terms & Conditions (`/terms`)**:
-    - Reservation deposit policy, 1-year congenital health guarantee terms, and ethical rehoming pledge.
+| Color | Hex Code |
+|---|---|
+| Cream | `#FFF8EC` |
+| Light Peach | `#FFE9C9` |
+| Warm Yellow | `#F6D28B` |
+| Caramel | `#D99545` |
+| Terracotta | `#A94E20` |
+| Chocolate | `#35190E` |
+| Soft Green | `#287B52` |
+| WhatsApp Green | `#25D366` |
 
 ---
 
-## ⚡ Interactive Features
+## ✨ Features
 
-- **Guest Favorites**: Click the heart on any puppy to save it to your local storage wishlist. Filter available puppies by favorites anytime.
-- **Puppy Comparison**: Compare up to 3 puppies side-by-side in a responsive comparison drawer (gender, age, price, origin, weight, hypoallergenic rating).
-- **Interactive Lifestyle Quiz**: 6-question quiz ("What kind of puppy fits your family?") that analyzes living space, activity level, allergies, and children to recommend matching available pups.
-- **Dynamic WhatsApp Links**: Prefills inquiry message with puppy name, breed, and price in AED for instant response.
+### 🏠 Home Page
+
+- Premium editorial hero section.
+- Puppy mascot illustrations and floating decorative elements.
+- Featured available puppies.
+- Breed discovery and interactive filters.
+- Local Dubai showroom and international puppy import pathways.
+- Visual adoption journey.
+- Puppy health and care promise.
+- Happy families preview.
+- FAQ preview and call-to-action sections.
+
+### 🐶 Available Puppies
+
+- Browse available puppies.
+- Filter by breed, gender, availability, origin, and price.
+- Search puppies by name or breed.
+- Sort by price, age, and newest arrivals.
+- Grid and list viewing modes.
+- Responsive mobile filter drawer.
+- Puppy image galleries and video indicators.
+- Dynamic results counter.
+- Empty-state handling with filter reset functionality.
+
+### 🐾 Puppy Details
+
+- Individual puppy profile pages.
+- High-resolution image gallery.
+- Thumbnail navigation.
+- Video preview modal.
+- Puppy information including age, gender, color, estimated weight, and origin.
+- Health information and vaccination details.
+- Microchip and pedigree information.
+- Puppy-specific inquiry form.
+- Related puppy recommendations.
+- Mobile sticky inquiry bar.
+- Dynamic WhatsApp inquiry links.
+
+### ❤️ Guest Favorites
+
+- Save favorite puppies using heart buttons.
+- Persistent favorites using browser local storage.
+- Browse puppies based on saved favorites.
+
+### ⚖️ Puppy Comparison
+
+- Compare up to three puppies.
+- Side-by-side comparison.
+- Compare breed, gender, age, price, origin, weight, and other attributes.
+- Responsive comparison drawer.
+
+### 🧩 Puppy Lifestyle Quiz
+
+An interactive quiz that helps visitors discover puppies that may match their lifestyle.
+
+The quiz considers:
+
+- Living space.
+- Activity level.
+- Family and children.
+- Allergy considerations.
+- Lifestyle preferences.
+
+Based on the answers, the website recommends matching available puppies.
+
+### 👨‍👩‍👧 Happy Families
+
+- Scrapbook-style customer gallery.
+- Customer stories and testimonials.
+- Breed filtering.
+- Interactive image lightbox.
+- Previous and next navigation.
+- Testimonial quotes.
+
+### 📖 How It Works
+
+- Interactive adoption pathway selection.
+- Dubai showroom adoption process.
+- European and Korean puppy import process.
+- Visual step-by-step timelines.
+- Puppy passport information.
+- Vaccination and microchip details.
+- Delivery and flight nanny information.
+
+### ❓ Frequently Asked Questions
+
+- Categorized FAQ sections.
+- Search functionality.
+- Category filtering.
+- Expand all and collapse all controls.
+- Puppy health, reservations, payments, delivery, imports, breeds, and aftercare information.
+- WhatsApp concierge contact for additional questions.
+
+### 📍 Visit & Contact
+
+- Contact and appointment booking form.
+- Showroom location information.
+- Contact details and social links.
+- Google Maps integration.
+- Interactive puppy-themed illustrations.
+
+### 🔐 Admin Dashboard
+
+Protected administrative dashboard for managing website content and business inquiries.
+
+**Dashboard Overview**
+- Total puppies.
+- Available puppies.
+- Reserved puppies.
+- Sold puppies.
+- New customer inquiries.
+
+**Puppy Management**
+- Create puppy profiles.
+- Edit puppy details.
+- Delete puppy records.
+- Update puppy availability.
+- Mark puppies as featured.
+- Manage puppy images and information.
+
+**Inquiry Management**
+- View and manage customer inquiries.
+- Filter inquiries by status.
+- Add internal notes.
+- Track follow-ups.
+- Open WhatsApp conversations with customers.
+
+**Testimonial Management**
+- Review customer testimonials.
+- Approve testimonials.
+- Hide testimonials from the public website.
+
+**Website Settings**
+- Manage contact information.
+- Update WhatsApp details.
+- Update showroom information.
+- Configure website headlines and business details.
 
 ---
 
-## 🛠️ Setup & Installation Instructions
+## 🛠️ Technology Stack
 
-### 1. Prerequisites
-- Node.js (v18.18+ or v20+ / v22+)
+### Frontend
+
+- **Next.js 14+** — React framework and App Router.
+- **TypeScript** — Type-safe development.
+- **Tailwind CSS** — Responsive styling and custom design system.
+- **Framer Motion** — Interactive animations.
+- **Lucide Icons** — Modern icon library.
+- **React Hook Form** — Form handling.
+- **Zod** — Form and data validation.
+- **Canvas Confetti** — Interactive celebration effects.
+
+### Backend
+
+- **Next.js Route Handlers** — Backend API endpoints.
+- **Server Components** — Server-side rendering and data handling.
+- **Prisma ORM** — Database access and management.
+- **PostgreSQL** — Relational database.
+- **JWT Cookies** — Authentication and session management.
+- **jose** — JWT security.
+- **bcryptjs** — Password hashing.
+
+### Deployment & Infrastructure
+
+- **Vercel** — Website hosting and deployment.
+- **Neon PostgreSQL** — Cloud PostgreSQL database.
+- **GitHub** — Version control and source code management.
+
+---
+
+## 🏗️ Architecture
+
+The project follows a full-stack architecture:
+
+```text
+                    ┌─────────────────────┐
+                    │      Visitors       │
+                    │  Desktop / Mobile   │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │    Next.js App      │
+                    │   Frontend / UI     │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │  Route Handlers     │
+                    │     REST APIs       │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │    Prisma ORM       │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │   PostgreSQL DB     │
+                    │   Persistent Data   │
+                    └─────────────────────┘
+```
+
+---
+
+## 📂 Project Structure
+
+```text
+TeddyPups/
+│
+├── prisma/
+│   ├── schema.prisma
+│   ├── migrations/
+│   └── seed.ts
+│
+├── public/
+│   ├── images/
+│   ├── icons/
+│   └── assets/
+│
+├── src/
+│   ├── app/
+│   │   ├── page.tsx
+│   │   ├── puppies/
+│   │   ├── happy-families/
+│   │   ├── how-it-works/
+│   │   ├── faq/
+│   │   ├── contact/
+│   │   ├── privacy/
+│   │   ├── terms/
+│   │   ├── admin/
+│   │   └── api/
+│   │
+│   ├── components/
+│   │   ├── ui/
+│   │   ├── layout/
+│   │   ├── puppies/
+│   │   ├── forms/
+│   │   └── animations/
+│   │
+│   ├── lib/
+│   │   ├── prisma.ts
+│   │   ├── auth.ts
+│   │   ├── validation.ts
+│   │   └── utils.ts
+│   │
+│   ├── hooks/
+│   ├── types/
+│   └── styles/
+│
+├── .env.example
+├── .gitignore
+├── package.json
+├── tailwind.config.ts
+├── tsconfig.json
+└── README.md
+```
+
+> The directory structure above represents the intended architecture. Actual directories and files may differ depending on the current implementation.
+
+---
+
+## 🚀 Installation and Setup
+
+### Prerequisites
+
+- Node.js 18.18+ or Node.js 20+
 - npm or pnpm
-- PostgreSQL database (Neon, Supabase, Railway, AWS RDS, or local Postgres)
+- PostgreSQL
+- Git
 
-### 2. Clone & Install Dependencies
+### 1. Clone the Repository
+
 ```bash
-cd d:\Pups
+git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+cd TeddyPups
+```
+
+### 2. Install Dependencies
+
+```bash
 npm install
 ```
 
-### 3. Environment Variables Configuration
-Create `.env` from the template only if you do not already have one. If it exists, edit it without overwriting your current local settings:
+### 3. Configure Environment Variables
+
+Create a `.env` file in the project root.
+
+If `.env.example` exists:
+
 ```powershell
-if (!(Test-Path .env)) { Copy-Item .env.example .env }
+if (!(Test-Path .env)) {
+    Copy-Item .env.example .env
+}
 ```
 
-Set the database URLs from your PostgreSQL provider. `DATABASE_URL` is used by the app; `DIRECT_URL` is the non-pooled connection Prisma uses for migrations. For local PostgreSQL, both can use the same URL.
+Configure the environment variables:
+
 ```env
-# PostgreSQL connections
+# Database
 DATABASE_URL="postgresql://username:password@localhost:5432/teddypups_db?schema=public"
 DIRECT_URL="postgresql://username:password@localhost:5432/teddypups_db?schema=public"
 DATA_BACKEND="postgres"
 
 # Admin Authentication
 ADMIN_EMAIL="your-admin@example.com"
-ADMIN_PASSWORD="replace-with-a-unique-strong-password"
-ADMIN_JWT_SECRET="replace-with-a-random-secret-at-least-32-characters"
+ADMIN_PASSWORD="your-strong-password"
+ADMIN_JWT_SECRET="your-random-secret-at-least-32-characters"
 
-# Public Brand Details
+# Website Configuration
 NEXT_PUBLIC_SITE_URL="http://localhost:3000"
 NEXT_PUBLIC_BRAND_NAME="TeddyPups UAE"
 NEXT_PUBLIC_WHATSAPP_NUMBER="+971501234567"
 NEXT_PUBLIC_PHONE="+971 4 800 PUPS"
 NEXT_PUBLIC_EMAIL="concierge@teddypups.ae"
-NEXT_PUBLIC_LOCATION="Villa 14, Al Wasl Road, Jumeirah 2, Dubai, UAE"
+NEXT_PUBLIC_LOCATION="Jumeirah 2, Dubai, UAE"
 ```
 
-### 4. Database Setup & Seeding
-Apply the checked-in Prisma migrations to the database:
+> Never commit your `.env` file, database credentials, JWT secrets, or private API keys to GitHub.
+
+### 4. Configure PostgreSQL
+
+Create a PostgreSQL database:
+
+```sql
+CREATE DATABASE teddypups_db;
+```
+
+Update the `DATABASE_URL` and `DIRECT_URL` values in your `.env` file according to your database configuration.
+
+### 5. Apply Database Migrations
+
 ```bash
 npm run db:deploy
 ```
 
-The Prisma Client is generated when dependencies are installed. Run `npm run prisma:generate` manually after changing the Prisma schema.
+Generate Prisma Client if necessary:
 
-For a new, empty database only, seed the demonstration puppies, testimonials, FAQs, and initial admin account:
+```bash
+npm run prisma:generate
+```
+
+### 6. Seed Demonstration Data
+
+For a new and empty database:
+
 ```bash
 npm run prisma:seed
 ```
 
-Seeding requires `ADMIN_EMAIL` and `ADMIN_PASSWORD`. It creates demonstration content; review or replace that content before using the site for real customers. Do not run the seed command on a database containing live data. `npm run prisma:push` is available for local prototyping, but use migrations for deployed databases.
+This may create demonstration puppy profiles, testimonials, FAQs, and initial administrative credentials.
 
-Development uses the in-memory demo store unless `DATA_BACKEND="postgres"` is set. In-memory changes are not durable and do not work across multiple instances. Production always uses PostgreSQL/Prisma.
-Set `DATA_BACKEND="postgres"` in your local `.env` when you want local development to use the configured database. The production deployment does not need this flag.
+**Important:** Do not run the seed command on a production database containing live customer data.
 
-### 5. Running Development Server
+### 7. Start the Development Server
+
 ```bash
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) to view the website.
 
-### 6. Production Build
-```bash
-npm run build
-npm run start
+Open:
+
+[http://localhost:3000](http://localhost:3000)
+
+---
+
+## 📦 Available Scripts
+
+| Command | Description |
+|---|---|
+| `npm install` | Install project dependencies |
+| `npm run dev` | Start the development server |
+| `npm run build` | Build the production application |
+| `npm run start` | Start the production server |
+| `npm run db:deploy` | Apply Prisma migrations |
+| `npm run prisma:generate` | Generate Prisma Client |
+| `npm run prisma:seed` | Seed demonstration data |
+| `npm run prisma:push` | Synchronize schema for local prototyping |
+
+Check your `package.json` for the exact scripts configured in the repository.
+
+---
+
+## 🔐 Admin Dashboard
+
+The administrative dashboard is available at:
+
+```text
+/admin
+```
+
+Authentication uses server-side credentials configured through environment variables.
+
+Admin credentials:
+
+```env
+ADMIN_EMAIL="your-admin@example.com"
+ADMIN_PASSWORD="your-strong-password"
+```
+
+Do not publish real administrator credentials in the repository or README.
+
+---
+
+## ☁️ Deployment
+
+The website is deployed using **Vercel**.
+
+### Deployment Stack
+
+| Service | Purpose |
+|---|---|
+| GitHub | Source code repository |
+| Vercel | Hosting and deployment |
+| Neon | Cloud PostgreSQL database |
+| Prisma | Database ORM and migrations |
+
+### Deployment Workflow
+
+1. Push the project to GitHub.
+2. Connect the GitHub repository to Vercel.
+3. Configure production environment variables.
+4. Connect the PostgreSQL database.
+5. Apply database migrations.
+6. Deploy the application.
+7. Verify the website and administrative dashboard.
+
+### Production Environment Variables
+
+Configure the required environment variables in Vercel:
+
+- `DATABASE_URL`
+- `DIRECT_URL`
+- `ADMIN_EMAIL`
+- `ADMIN_PASSWORD`
+- `ADMIN_JWT_SECRET`
+- `NEXT_PUBLIC_SITE_URL`
+- `NEXT_PUBLIC_BRAND_NAME`
+- `NEXT_PUBLIC_WHATSAPP_NUMBER`
+- `NEXT_PUBLIC_PHONE`
+- `NEXT_PUBLIC_EMAIL`
+- `NEXT_PUBLIC_LOCATION`
+
+Additional media storage credentials should only be configured if the project uses an external media upload service.
+
+---
+
+## 📱 Responsive Design
+
+TeddyPups UAE is designed to provide an optimized experience across:
+
+- Desktop computers.
+- Laptop screens.
+- Tablets.
+- Mobile devices.
+
+The responsive interface includes mobile navigation, adaptive puppy galleries, responsive grids, mobile filter drawers, sticky inquiry controls, and touch-friendly interactions.
+
+---
+
+## 🛡️ Security Considerations
+
+- Server-side authentication.
+- Secure JWT-based sessions.
+- Password hashing with bcrypt.
+- Environment-based secret management.
+- Zod validation for user input.
+- Protected administrative routes.
+- Database access through Prisma.
+- Customer inquiry data handled through server-side endpoints.
+
+---
+
+## 🖼️ Screenshots
+
+Screenshots of the live website can be added here to showcase the design and functionality.
+
+```text
+screenshots/
+├── home.png
+├── puppies.png
+├── puppy-details.png
+├── happy-families.png
+├── contact.png
+└── admin-dashboard.png
 ```
 
 ---
 
-## 🔐 Staff Concierge Login
+## 🔮 Future Enhancements
 
-- **URL**: [http://localhost:3000/admin](http://localhost:3000/admin)
-- Use the `ADMIN_EMAIL` and `ADMIN_PASSWORD` values configured in the server environment.
-
----
-
-## ☁️ Deploy with GitHub, Neon, and Vercel
-
-Recommended setup for this Next.js + Prisma project:
-
-- **Git hosting:** [GitHub](https://github.com/)
-- **PostgreSQL:** [Neon](https://neon.tech/)
-- **Website hosting:** [Vercel](https://vercel.com/)
-
-### A. Publish the project to GitHub
-1. Create a **private, empty** GitHub repository (do not add another README or `.gitignore`).
-2. Before pushing, make sure no credentials are in the files or Git history. `.gitignore` prevents future `.env` additions, but it does not erase a file from earlier commits. If a secret was ever committed, rotate it; for a public repository, also remove it from Git history.
-3. Check `git status` and review the files before staging. Then stage and commit the website source, assets, Prisma schema/migrations, and package files:
-   ```powershell
-   git add -A
-   git status
-   git commit -m "Add TeddyPups website"
-   ```
-4. Add the new repository as `origin`, then push the `main` branch:
-   ```powershell
-   git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
-   git branch -M main
-   git push -u origin main
-   ```
-   If `origin` already exists, update it with `git remote set-url origin ...` instead.
-
-### B. Create and initialize the database
-1. Create a Neon project and database.
-2. Copy its **pooled** connection string into `DATABASE_URL`, and its **direct/unpooled** connection string into `DIRECT_URL`. Keep both private.
-3. Put these values in your local `.env`, along with a unique admin email/password and a randomly generated `ADMIN_JWT_SECRET`.
-4. From the project folder run:
-   ```powershell
-   npm install
-   npm run db:deploy
-   npm run prisma:seed
-   ```
-   Run the seed command only once on a new, empty database. It creates demo records and the admin account.
-
-### C. Deploy the website on Vercel
-1. Sign in to Vercel, choose **Add New Project**, and import the GitHub repository.
-2. Add environment variables in **Project Settings → Environment Variables**. Configure them for Production:
-   - `DATABASE_URL` — Neon pooled connection string
-   - `DIRECT_URL` — Neon direct connection string
-   - `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `ADMIN_JWT_SECRET` — your private admin credentials
-   - `NEXT_PUBLIC_SITE_URL` — the deployed `https://...vercel.app` URL (update it after the first deployment if needed)
-   - `NEXT_PUBLIC_BRAND_NAME`, `NEXT_PUBLIC_WHATSAPP_NUMBER`, `NEXT_PUBLIC_PHONE`, `NEXT_PUBLIC_EMAIL`, `NEXT_PUBLIC_LOCATION`
-   - `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET` only if you configure Cloudinary media uploads
-3. Leave the build command as `npm run build` and deploy. Vercel will build the Next.js app; future pushes to the connected branch trigger deployments.
-4. Open `/admin` on your deployed site and sign in with `ADMIN_EMAIL` and `ADMIN_PASSWORD`.
-
-Never put production credentials in GitHub files or client-side `NEXT_PUBLIC_` variables. Add the Vercel environment variables separately for Preview if you use preview deployments, preferably pointing previews at a separate database.
+- Online puppy reservation and deposit payment integration.
+- Email notifications for customer inquiries.
+- Advanced admin analytics and reporting.
+- Cloud-based puppy image and video management.
+- Appointment scheduling integration.
+- Automated inquiry follow-up system.
+- SEO optimization and structured metadata.
+- Enhanced accessibility and performance optimization.
 
 ---
 
-## 📜 Demonstration Data Notice
+## ⚠️ Demonstration Data Disclaimer
 
-*All puppy records, mock health passports, customer stories, and testimonials included in the seed data are created for portfolio demonstration and system presentation purposes.*
+Puppy profiles, health records, customer testimonials, and other sample content included in the project may be demonstration data created for development and portfolio presentation purposes.
 
+Such information should not be interpreted as verified real-world business records.
+
+---
+
+## 👩‍💻 Developer
+
+**Rutvi Mistry**
+
+Bachelor's in Information Technology | Full-Stack Development | AI & Automation
+
+- GitHub: [rutvimistry12](https://github.com/rutvimistry12)
+- LinkedIn: [Rutvi Mistry](https://www.linkedin.com/in/rutvi-mistry-it/)
+
+---
+
+## 📄 License
+
+This project is developed for portfolio, demonstration, and educational purposes.
+
+---
+
+<p align="center">
+  <strong>Made with ❤️ and a little puppy magic 🐾</strong>
+</p>
+
+<p align="center">
+  <a href="https://teddy-pups-chi.vercel.app/">Visit TeddyPups UAE</a>
+</p>
